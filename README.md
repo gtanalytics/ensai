@@ -76,17 +76,27 @@ Opinion mining : Applicationq (8h)
 
 ## Documentation
 
-•	Web DataMining, Exploring Hyperlinks, Contents, and Usage Data, Bing Liu, Springer (Chapitre 6 à 13) (**)
-•	Information Retrieval, [http://nlp.stanford.edu/IR-book/pdf/irbookonlinereading.pdf (chapitres 1-3)](http://nlp.stanford.edu/IR-book/pdf/irbookonlinereading.pdf (chapitres 1-3) (**)
-•	package tm in R, [http://cran.r-project.org/web/packages/tm/vignettes/tm.pdf](http://cran.r-project.org/web/packages/tm/vignettes/tm.pdf) (*)
-•	Infrastructure of Texmining with R, http://www.jstatsoft.org/v25/i05/paper
-•	Webmining pluging in R, [http://cran.r-project.org/web/packages/tm.plugin.webmining/vignettes/ShortIntro.pdf](http://cran.r-project.org/web/packages/tm.plugin.webmining/vignettes/ShortIntro.pdf)
-•	PageRank,  [http://ilpubs.stanford.edu:8090/422/1/1999-66.pdf](http://ilpubs.stanford.edu:8090/422/1/1999-66.pdf)
-•	Mining the social web, [https://github.com/ptwobrussell/Mining-the-Social-Web](https://github.com/ptwobrussell/Mining-the-Social-Web)
-•	Pang B. and Lee L. (2008). "Opinion mining and sentiment analysis." Foundations and Trends in Information Retrieval 2(1-2).
-•	Dini L. and Mazinni G. (2002). Opinion classification through information extraction. CELI. Turin, Italy
-•	Cornuéjols A., Miclet L. and Kodratoff Y. (2002). Apprentissage artificiel : Concepts et algorithmes
-•	Ilieva L. (2004). Combining Pattern Classifiers : Methods and Algorithms (chapitre 1 “Fundamentals of Pattern Recognition”, chapitre 4 “Fusion of Label Outputs”) (*)
+*	Web DataMining, Exploring Hyperlinks, Contents, and Usage Data, Bing Liu, Springer (Chapitre 6 à 13) (**)
+
+*	Information Retrieval, [http://nlp.stanford.edu/IR-book/pdf/irbookonlinereading.pdf (chapitres 1-3)](http://nlp.stanford.edu/IR-book/pdf/irbookonlinereading.pdf (chapitres 1-3) (**)
+
+*	package tm in R, [http://cran.r-project.org/web/packages/tm/vignettes/tm.pdf](http://cran.r-project.org/web/packages/tm/vignettes/tm.pdf) (*)
+
+*	Infrastructure of Texmining with R, http://www.jstatsoft.org/v25/i05/paper
+
+*	Webmining pluging in R, [http://cran.r-project.org/web/packages/tm.plugin.webmining/vignettes/ShortIntro.pdf](http://cran.r-project.org/web/packages/tm.plugin.webmining/vignettes/ShortIntro.pdf)
+
+*	PageRank,  [http://ilpubs.stanford.edu:8090/422/1/1999-66.pdf](http://ilpubs.stanford.edu:8090/422/1/1999-66.pdf)
+
+*	Mining the social web, [https://github.com/ptwobrussell/Mining-the-Social-Web](https://github.com/ptwobrussell/Mining-the-Social-Web)
+
+*	Pang B. and Lee L. (2008). "Opinion mining and sentiment analysis." Foundations and Trends in Information Retrieval 2(1-2).
+
+*	Dini L. and Mazinni G. (2002). Opinion classification through information extraction. CELI. Turin, Italy
+
+*	Cornuéjols A., Miclet L. and Kodratoff Y. (2002). Apprentissage artificiel : Concepts et algorithmes
+
+*	Ilieva L. (2004). Combining Pattern Classifiers : Methods and Algorithms (chapitre 1 “Fundamentals of Pattern Recognition”, chapitre 4 “Fusion of Label Outputs”) (*)
 
 
 ## Outils
@@ -103,6 +113,6 @@ Tous les documents déposés ici sont libres de droits à conditions de **citer*
 
 ## Contacts
 
-GjT | Senior Data scientist | Groupe SoLocal | 2014
-Follow me on [wordpress](http://sciencendata.wordpress.com)
-Follow me on [github](http://github.io/gtanalytics)
+* GjT | Senior Data scientist | Groupe SoLocal | 2014
+* Follow me on [wordpress](http://sciencendata.wordpress.com)
+* Follow me on [github](http://github.io/gtanalytics)
