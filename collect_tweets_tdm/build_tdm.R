@@ -20,7 +20,7 @@ load("twitteR_credentials.RData")
 twitteR::registerTwitterOAuth(myacc)
 # Récupération des tweets
 
-tweets <- searchTwitter("#techitdays", n = 1000,cainfo="cacert.pem")j,z
+tweets <- searchTwitter("#techitdays", n = 1000,cainfo="cacert.pem")
 tweets_so <- searchTwitter("solocal", n = 1000,cainfo="cacert.pem")
 tweets_a_pj= searchTwitter("@pagesjaunes", n = 100,cainfo="cacert.pem")
 # Exemple de tweets récupérés
@@ -40,11 +40,11 @@ write.table(tweets_dfx, "tweets_so.csv",sep=';')
 
 # Quelques infos sur les données récupérées
 str(tweets_dfx)
-length(unique(tweets_dfx$screenName)) # how many different twitter users
-dim(tweets_dfx)
+length(unique(tweets_df$screenName)) # how many different twitter users
+dim(tweets_df)
 
 # Statistiques sur les utilisateurs
-users = as.data.frame(table(tweets_dfx$screenName))
+users = as.data.frame(table(tweets_df$screenName))
 
 # Statistiques sur les mots les plus employés
 
@@ -100,13 +100,13 @@ inspect(tdm_pj[5:15,1:12])
 
 # Les termes les plus fréquents
 
-findFreqTerms(tdm,3)
+findFreqTerms(tdm_pj,3)
 
 # Les termes les plus liés entre eux 
-findAssocs(tdm, "digital", corlimit=0.3)
+findAssocs(tdm_pj, "digital", corlimit=0.3)
 
 # Les mots les plus fréquents
-tdm_matrix = as.matrix(tdm)
+tdm_matrix = as.matrix(tdm_pj)
 wordcloud = data.frame(words= row.names(tdm_matrix),frequency=rowSums(tdm_matrix))
 wordcloud = filter(wordcloud,frequency>=3)
 head(arrange(wordcloud,desc(frequency)))
@@ -124,7 +124,7 @@ p+theme_gdocs()+labs(title= "Mots les plus fréquents\ndans les tweets sur Pages
 
 set.seed(142)
 library(wordcloud)
-wordcloud(wordcloud$words, wordcloud$frequency, scale=c(3, .1),
+wordcloud(wordcloud$words, wordcloud$frequency, scale=c(3, 1),
           colors=brewer.pal(6, "Dark2"))
 
 

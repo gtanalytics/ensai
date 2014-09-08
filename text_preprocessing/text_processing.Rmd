@@ -1,0 +1,32 @@
+---
+title: 'Text Preprocessing : Applications avec R'
+author: "GjT - Septembre 2014"
+date: "Monday, September 08, 2014"
+output: html_document
+---
+
+## Preprocessing
+
+Il existe plusieurs étapes pour réaliser un pre-processing d'un texte. Les techniques diffèrent selon que l'on s'attaque à des documents HTML ou encore à des simples textes. 
+
+Le preprocessing est donc la suite d'opération qui consiste à enlever tout le superflu d'un texte pour ne garder que les éléments qui se prête à l'analyse. Ces opérations sont en général, la suppression des mots vide, la suppression de la ponctuation, la mise en forme des lettres (majuscules vers minuscules), la stemmatisation, la supression des chiffres. Pour les pages web, en plus de ces opérations, il faut penser à enlever des tags et à distinguer le contenu utile du superflu.
+
+Dans la suite, nous appliquerons le preprocessing à l'analyse d'une page wikipedia  et pour s'entraîner, nous irons récupérer un livre des débats politiques depuis 1974 pour en faire une analyse textuelle
+
+### Données
+
+### Enlever les mots vides
+
+### Enlever les nombres
+
+### Ponctuation
+
+### Sensibilité à la casse
+
+### Cas particuliers des pages Web
+
+### Wrap up : Une fonction R pour aider à la mise en forme du texte
+
+### Exercices
+
+Récupérer 
