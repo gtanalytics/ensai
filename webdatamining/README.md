@@ -6,7 +6,7 @@ On trouvera ici toutes les notes de cours et les programmes pour le cours de web
 
 Le cours se décompose en deux parties : 
 
-> Information Retrieval : Preprocessing, Extraction and PageRank 
+> Information Retrieval : Preprocessing, Extraction and Applicications 
 Il s'agit d'une introduction à la collecte des informations issues du web, à la notion d’Information Retrieval, à la constitution des corpus, à leur organisation à des fins d’analyse exploratoires. 
 On introduira par ailleurs l’algorithme qui permet de hiérarchiser les pages web (pagerank) et à la classification de documents textuels.
 
@@ -15,63 +15,82 @@ Après avoir appris à récupérer les informations, à faire du pre-processing 
 
 ## Programme
 
-### Information Retrieval (3h)
--	Information Retrieval
-	o	Concepts & Définitions
-	o	Term Document Matrix
-	o	Tf-idf, Cosine Index, jaccard Index
-	o	Stemming
+> Partie 1
 
--	Web Search : Google 
-	o	Google et le Page Rank
-	o	Pages Jaunes (Notion de tri alpha)
-	o	Notion de graphes et de vecteurs propres 
+### Information Retrieval - Théorie (6h)
 
-### Information Retrieval application (9h)
--	TP1 : Introduction à R pour le Web Mining (3h)
-	o	Installation de librairies de textmining disponible dans R
-	o	Collecter les informations issues du WEB : Twitter, Wikipedia
-	o	Pre-processing : Stemmatisation, Lemmatisation, 
-	o	Parsing HTML, XML, 
-	o	Tokenization
-	o	Introduction à la term-document matrix
+**Information Retrieval**
 
--	TP2 : Similarité de documents (Applications aux recherches utilisateurs sur le site pagesjaunes.fr (3h)
-	o	Indices de similarité : Tf, tf-idf Jaccard, Cosine
-	o	Distance de Damerau, Distance de jaro
-	o	Liens entre les recherches, Notion de graphe de recherche
-	-	TP3 : Ordonnancement des résultats d’une recherche (3h)
-	o	PageRank
-	o	Détecter les mots clés
-	o	Intro à la classification des docs sur mots clés
+* Concepts & Définitions
 
-Opinion Mining (4h)
--	Quelles applications dans quels domaines d’activités ? 
--	Etat de l’art (opinion mining, sentiment analysis, affective computing)
-	o	Quels descripteurs pour quels types de données textuelles
-	o	Sélection automatique de descripteurs (réduction de l’espace de recherche)
-	o	Quels algorithmes de classification dans quels cas ?
+* World Wide Web
 
--	Constitution du corpus 
+* Indexation & Crawl
 
-	o	Réflexions générales sur la qualité des données  et son impact
-	o	Annotation manuelle et automatique (schéma d’annotation, calcul d’un score d’agrément inter-annotateur)
-	o	 Répartition des données dans les classes
+* Notions de moteur de recherche 
 
--	Pre-processing (texte)
-	o	Quelle granularité pour mes données (mot, phrases, paragraphes)
-	o	Annotation syntaxique et sémantique (exemples de POS, WordNet-Affect)
+* Introduction aux techniques de webdatamining
 
--	Evaluation
-	o	Quelles mesures utiliser pour mesurer la qualité d’un modèle (rappel, précision, f-score, ROC, indices de confiance a 0.95)
-	o	Produit de la société TEMIS (cartouche sentiments)
-	o	Produit de la société Sinequa
+* Organisation de l'information issue du web
 
-Opinion mining : Applicationq (8h)
+* Domaines d'applications du webmining
+
+**Webmining : Outils et Techniques**
+
+* Web Search
+
+* User logs
+
+* Term Document Matrix
+
+* Tf-idf, Cosine Index, jaccard Index
+
+-----
+
+### Information Retrieval & Application (12h)
+
+**TP1 : Introduction à R pour le Web Mining** (4h)
+
+* Installation de librairies de wembining  disponible dans R
+* Collecter les informations issues du WEB : Exemple de Twitter
+* Pre-processing : Stemmatisation, Lemmatisation, 
+* Parsing HTML, XML, 
+* Tokenization
+
+**TP2 : Web Content Mining** (4h)
+
+* Introduction à la term-document matrix
+* Similarités de documents
+* Notions de distance statistique
+* Classification de documents
+* Détection des signaux faibles
+
+**TP3 :Web Usage Mining ** (4h)
+
+* Pré-traitement des données issues des logs
+* Stockage et Organisation
+* Règles d'associatione et motifs séquentiels
+
+
+> Partie 2
+
+**Opinion Mining - Théorie** (2h)
+
+Etat de l'art
+
+* Etat de l’art (opinion mining, sentiment analysis, affective computing)
+* Quels descripteurs pour quels types de données textuelles
+* Sélection automatique de descripteurs (réduction de l’espace de recherche)
+* Annotation manuelle et automatique (schéma d’annotation, calcul d’un score d’agrément inter-annotateur)
+
+-	Principaux modèles en Opinion mining
+* Quels algorithmes de classification dans quels cas ?
+* Quelles mesures utiliser pour mesurer la qualité d’un modèle (rappel, précision, f-score, ROC, indices de confiance)
+
+**Opinion mining - Applications** (4h)
+
 -	TP1 : classification de la valence d’un texte littéraire (critiques de cinéma) 
--	TP2 : classification de la valence de textes issus de réseaux sociaux (twitter, facebook)  
--	TP3 : Fusion de modèles (à partir des modèles crées dans le TP2)   
--	TP4 (optionnel) : Constructions de modèles à partir d’indices multimodaux (texte + audio)
+-	TP2 : Sentiment Analysis autour des textes issus des réseaux sociaux 
 
 
 ## Documentation
@@ -113,6 +132,6 @@ Tous les documents déposés ici sont libres de droits à conditions de **citer*
 
 ## Contacts
 
-* GjT | Senior Data scientist | Groupe SoLocal | 2014
+* GjT | Data scientist | Groupe Solocal | 2014
 * Follow me on [wordpress](http://sciencendata.wordpress.com)
 * Follow me on [github](http://github.io/gtanalytics)
