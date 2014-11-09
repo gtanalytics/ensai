@@ -65,7 +65,7 @@ Après avoir appris à récupérer les informations, à faire du pre-processing 
 * Classification de documents
 * Détection des signaux faibles
 
-**TP3 :Web Usage Mining ** (4h)
+**TP3 :Web Usage Mining** (4h)
 
 * Pré-traitement des données issues des logs
 * Stockage et Organisation
