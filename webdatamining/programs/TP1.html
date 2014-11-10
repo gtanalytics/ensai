@@ -58,6 +58,21 @@ if (window.hljs && document.readyState && document.readyState === "complete") {
 <h4 class="date"><em>10 Nov 2014</em></h4>
 </div>
 
+<div id="TOC">
+<ul>
+<li><a href="#tp-1-introduction-a-r-pour-le-webmining">TP 1 : Introduction à R pour le webmining</a><ul>
+<li><a href="#objectifs">Objectifs</a></li>
+<li><a href="#installer-r">Installer R</a></li>
+<li><a href="#installer-les-librairies-de-webmining-et">Installer les librairies de webmining et</a></li>
+<li><a href="#bases-de-la-programmation-en-r">Bases de la programmation en R</a></li>
+<li><a href="#recuperation-de-tweets">Récupération de tweets</a></li>
+<li><a href="#r-et-twitter-quelques-fonctions-cles">R et Twitter : Quelques fonctions clés</a></li>
+<li><a href="#installer-les-librairies-essentielles-dans-r">Installer les librairies essentielles dans R</a></li>
+<li><a href="#se-connecter-a-lapi-de-twitter-depuis-r">Se connecter à l’API de Twitter depuis R</a></li>
+<li><a href="#pre-processing-stemmatisation-lemmatisation-tokenization">Pre-processing : Stemmatisation, Lemmatisation, Tokenization</a></li>
+</ul></li>
+</ul>
+</div>
 
 <div id="tp-1-introduction-a-r-pour-le-webmining" class="section level1">
 <h1>TP 1 : Introduction à R pour le webmining</h1>
@@ -340,6 +355,90 @@ if (window.hljs && document.readyState && document.readyState === "complete") {
 </div>
 <div id="recuperation-de-tweets" class="section level3">
 <h3>Récupération de tweets</h3>
+<div id="intro" class="section level4">
+<h4>Intro</h4>
+<p>La collecte d’informations sur le web passe en général par une logique de crawling, scrapping et d’API. Dans ce tutoriel, nous montrons comment se connecter à l’API de twitter pour récupérer des tweets et construire une term-document-matrix</p>
+</div>
+<div id="definitions" class="section level4">
+<h4>Définitions</h4>
+<blockquote>
+<p>Crawler Robot d’indexation qui permet de parcourir le web de manière automatique. Faire un web crawler revient en général à collecter le contenu sur le web à des fins d’indexation et in fine, d’analyse</p>
+</blockquote>
+<blockquote>
+<p>Scrapper On utilise souvent les mots scrapping et crawling de manière indistincte. Le web scraping est une technique d’extraction du contenu de sites Web, via un script ou un programme, dans le but de le transformer pour permettre son utilisation dans un autre contexte.</p>
+</blockquote>
+<p>Ainsi, pour nous, l’action de crawler et de scrapper sera identique.</p>
+<blockquote>
+<p>API</p>
+</blockquote>
+<p>En informatique, une interface de programmation (souvent désignée par le terme API pour Application Programming Interface) est un ensemble normalisé de classes, de méthodes ou de fonctions qui sert de façade par laquelle un logiciel offre des services à d’autres logiciels. Elle est offerte par une bibliothèque logicielle ou un service web, le plus souvent accompagnée d’une description qui spécifie comment des programmes consommateurs peuvent se servir des fonctionnalités du programme fournisseur (source wikipedia).</p>
+<p>L’objectif est de fournir une porte d’accès à une fonctionnalité en cachant les détails de la mise en œuvre.</p>
+</div>
+<div id="compte-developpeur-twitter" class="section level4">
+<h4>Compte développeur Twitter</h4>
+<p>Un compte développeur chez Twitter permet de se connecter à Twitter et de récupérer les tweets.</p>
+<p><a href="https://www.youtube.com/watch?v=YuJUtOfcKfo">Cette vidéo</a> montre en deux minutes comment procéder pour se créer un compte développeur.</p>
+<p>Créer une application sur le site des développeurs de twitter, <a href="dev.twitter.com">dev.twitter.com</a> générer 4 valeurs-clé appelées Consumer key, Consumer secret, Access token, et Access token secret qui seront utilisées pour authentifier et envoyer nos requêtes faites à partir de R.</p>
+</div>
+</div>
+<div id="r-et-twitter-quelques-fonctions-cles" class="section level3">
+<h3>R et Twitter : Quelques fonctions clés</h3>
+<blockquote>
+<p>Installer les librairies essentielles dans R</p>
+</blockquote>
+<p>Il existe plusieurs libairies dans R qui permettent de se connecter à l’API de twitter, de récupérer des tweets, et de les analyser.</p>
+<p>les libairies les plus courantes sont <code>twitteR</code>, <code>streamR</code></p>
+</div>
+<div id="installer-les-librairies-essentielles-dans-r" class="section level3">
+<h3>Installer les librairies essentielles dans R</h3>
+<pre class="r"><code>&gt; install.packages(&quot;ROAuth&quot;)
+&gt; install.packages(&quot;twitteR&quot;)
+&gt; install.packages(&quot;tm&quot;) # Bibliothèque de textmining qui contient plusieurs fonctions, notamment, celles permettant de réaliser des term-doc-matrix</code></pre>
+</div>
+<div id="se-connecter-a-lapi-de-twitter-depuis-r" class="section level3">
+<h3>Se connecter à l’API de Twitter depuis R</h3>
+<pre class="r"><code>&gt; download.file(url=&quot;http://curl.haxx.se/ca/cacert.pem&quot;, destfile=&quot;cacert.pem&quot;)
+&gt; library(twitteR)
+&gt; requestURL &lt;- &quot;https://api.twitter.com/oauth/request_token&quot;
+&gt; authURL  = &quot;https://api.twitter.com/oauth/authorize&quot;
+&gt; accessURL= &quot;https://api.twitter.com/oauth/access_token&quot;
+&gt; consumerKey =&quot;xxxx&quot;
+&gt; consumerSecret =&quot;xxxxxx&quot;
+&gt; myacc &lt;- OAuthFactory$new(consumerKey=consumerKey,
++                           consumerSecret=consumerSecret,
++                           requestURL=requestURL,
++                           accessURL=accessURL, 
++                           authURL=authURL)
+&gt; myacc$handshake(cainfo = paste0(dir(),&quot;/cacert.pem&quot;) , ssl.verifypeer = FALSE )
+&gt; registerTwitterOAuth(myacc)
+&gt; save(list=&quot;myacc&quot;, file=&quot;twitteR_credentials.RData&quot;)</code></pre>
+<p>La fonction <code>save(list=&quot;myacc&quot;, file=&quot;twitteR_credentials.RData&quot;)</code> permet de se passer de l’authentification à chaque fois que l’on a besoin de se connecter à l’API. Il s’agit d’enrégistrer ces informations de connexion et d’en faire usage par une simple fonction <code>load()</code> et ainsi, d’éviter de diffuser son mot de passe en clair.</p>
+<div id="collecter-les-tweets-a-partir-de-r" class="section level4">
+<h4>Collecter les tweets à partir de R</h4>
+<blockquote>
+<p>Etape 1 : S’authentifier</p>
+</blockquote>
+<pre class="r"><code># Library
+library(twitteR)
+library(tm)
+# Authentification
+load(&quot;twitteR_credentials.RData&quot;)
+registerTwitterOAuth(myacc)</code></pre>
+<blockquote>
+<p>Etape 2 : Récupérer des tweets</p>
+</blockquote>
+<pre class="r"><code>&gt; # Récupération des tweets
+&gt; tweets &lt;- searchTwitter(&quot;#LeJourDeLaRentreeTu&quot;, n = 50,cainfo=&quot;cacert.pem&quot;)
+&gt; # Construire un dataframe à partir de la liste de tweets
+&gt; tweets_df &lt;- do.call(&quot;rbind&quot;, lapply(tweets, as.data.frame))
+&gt; tweets_df = select(tweets_df,text,created,retweeted)</code></pre>
+</div>
+<div id="term-document-matrix" class="section level4">
+<h4>Term-Document-Matrix</h4>
+<p>Une matrice de matrice document terme ou terme-document est une matrice au sens mathématique du terme qui décrit la fréquence des termes qui aparaissent dans une collection de documents.</p>
+<p>Dans une tdm(term-document-matrix), les lignes correspondent aux documents de la collection et les colonnes correspondent à des termes. Il existe différents systèmes pour déterminer la valeur que chaque entrée de la matrice doit prendre. le plus répandu est la mesure tf-idf( Term Frequency-Inverse Document Frequency), mais aussi, tf(Term Frequency).</p>
+<p>Ces tdm sont très utiles dans le traitement du langage naturel.</p>
+</div>
 </div>
 <div id="pre-processing-stemmatisation-lemmatisation-tokenization" class="section level3">
 <h3>Pre-processing : Stemmatisation, Lemmatisation, Tokenization</h3>

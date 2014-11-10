@@ -511,6 +511,107 @@ Notez bien : Une fonction R peut retourner n'importe quel type connu de R
 
 ### Récupération de tweets
 
+#### Intro
+
+La collecte d'informations sur le web passe en général par une logique de crawling, scrapping et d'API. Dans ce tutoriel, nous montrons comment se connecter à l'API de twitter pour récupérer des tweets et construire une term-document-matrix
+
+####Définitions
+
+> Crawler 
+Robot d'indexation qui permet de parcourir le web de manière automatique. Faire un web crawler revient en général à collecter le contenu sur le web à des fins d'indexation et in fine, d'analyse
+
+> Scrapper
+On utilise souvent les mots scrapping et crawling de manière indistincte. Le web scraping est une technique d'extraction du contenu de sites Web, via un script ou un programme, dans le but de le transformer pour permettre son utilisation dans un autre contexte. 
+
+Ainsi, pour nous, l'action de crawler et de scrapper sera identique.
+
+> API
+
+En informatique, une interface de programmation (souvent désignée par le terme API pour Application Programming Interface) est un ensemble normalisé de classes, de méthodes ou de fonctions qui sert de façade par laquelle un logiciel offre des services à d'autres logiciels. Elle est offerte par une bibliothèque logicielle ou un service web, le plus souvent accompagnée d'une description qui spécifie comment des programmes consommateurs peuvent se servir des fonctionnalités du programme fournisseur (source wikipedia).
+
+L'objectif est de fournir une porte d'accès à une fonctionnalité en cachant les détails de la mise en œuvre.
+
+#### Compte développeur Twitter
+
+Un compte développeur chez Twitter permet de se connecter à Twitter et de récupérer les tweets.
+
+[Cette vidéo](https://www.youtube.com/watch?v=YuJUtOfcKfo) montre en deux minutes comment procéder pour se créer un compte développeur.
+
+Créer une application sur le site des développeurs de twitter, [dev.twitter.com](dev.twitter.com) générer 4 valeurs-clé appelées Consumer key, Consumer secret, Access token, et Access token secret qui seront utilisées pour authentifier et envoyer nos requêtes faites à partir de R.
+
+
+### R et Twitter : Quelques fonctions clés
+
+> Installer les librairies essentielles dans R
+
+Il existe plusieurs libairies dans R qui permettent de se connecter à l'API de twitter, de récupérer des tweets, et de les analyser.
+
+les libairies les plus courantes sont `twitteR`, `streamR`
+
+### Installer les librairies essentielles dans R
+
+```r
+> install.packages("ROAuth")
+> install.packages("twitteR")
+> install.packages("tm") # Bibliothèque de textmining qui contient plusieurs fonctions, notamment, celles permettant de réaliser des term-doc-matrix
+```
+
+
+### Se connecter à l'API de Twitter depuis R
+
+```r
+> download.file(url="http://curl.haxx.se/ca/cacert.pem", destfile="cacert.pem")
+> library(twitteR)
+> requestURL <- "https://api.twitter.com/oauth/request_token"
+> authURL  = "https://api.twitter.com/oauth/authorize"
+> accessURL= "https://api.twitter.com/oauth/access_token"
+> consumerKey ="xxxx"
+> consumerSecret ="xxxxxx"
+> myacc <- OAuthFactory$new(consumerKey=consumerKey,
++                           consumerSecret=consumerSecret,
++                           requestURL=requestURL,
++                           accessURL=accessURL, 
++                           authURL=authURL)
+> myacc$handshake(cainfo = paste0(dir(),"/cacert.pem") , ssl.verifypeer = FALSE )
+> registerTwitterOAuth(myacc)
+> save(list="myacc", file="twitteR_credentials.RData")
+```
+La fonction `save(list="myacc", file="twitteR_credentials.RData")` permet de se passer de l'authentification à chaque fois que l'on a besoin de se connecter à l'API. Il s'agit d'enrégistrer ces informations de connexion et d'en faire usage par une simple fonction `load()` et ainsi, d'éviter de diffuser son mot de passe en clair.
+
+
+#### Collecter les tweets à partir de R
+
+> Etape 1 : S'authentifier
+
+
+```r
+# Library
+library(twitteR)
+library(tm)
+# Authentification
+load("twitteR_credentials.RData")
+registerTwitterOAuth(myacc)
+```
+
+> Etape 2 : Récupérer des tweets
+
+
+```r
+> # Récupération des tweets
+> tweets <- searchTwitter("#LeJourDeLaRentreeTu", n = 50,cainfo="cacert.pem")
+> # Construire un dataframe à partir de la liste de tweets
+> tweets_df <- do.call("rbind", lapply(tweets, as.data.frame))
+> tweets_df = select(tweets_df,text,created,retweeted)
+```
+
+#### Term-Document-Matrix
+
+Une matrice de matrice document terme ou terme-document est une matrice au sens mathématique du terme qui décrit la fréquence des termes qui aparaissent dans une collection de documents. 
+
+Dans une tdm(term-document-matrix), les lignes correspondent aux documents de la collection et les colonnes correspondent à des termes. Il existe différents systèmes pour déterminer la valeur que chaque entrée de la matrice doit prendre. le plus répandu est la mesure tf-idf( Term Frequency-Inverse Document Frequency), mais aussi, tf(Term Frequency).
+
+Ces tdm sont très utiles dans le traitement du langage naturel.
+
 ### Pre-processing : Stemmatisation, Lemmatisation, Tokenization
 
 
